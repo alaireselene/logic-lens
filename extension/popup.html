@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Logic Lens - Fact Checker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      @layer components {
+        .criterion-card {
+          @apply bg-white rounded-lg shadow p-4 mb-4;
+        }
+        .criterion-header {
+          @apply flex justify-between items-center mb-2;
+        }
+        .criterion-name {
+          @apply text-lg font-semibold text-gray-800;
+        }
+        .criterion-points {
+          @apply text-sm font-medium text-gray-600;
+        }
+        .criterion-result {
+          @apply px-2 py-1 rounded text-sm font-medium;
+        }
+        .result-true {
+          @apply bg-green-100 text-green-800;
+        }
+        .result-false {
+          @apply bg-red-100 text-red-800;
+        }
+        .result-review {
+          @apply bg-yellow-100 text-yellow-800;
+        }
+        .sentiment-badge {
+          @apply px-3 py-1 rounded-full text-sm font-medium;
+        }
+        .sentiment-negative {
+          @apply bg-red-100 text-red-800;
+        }
+        .sentiment-positive {
+          @apply bg-green-100 text-green-800;
+        }
+        .sentiment-neutral {
+          @apply bg-gray-100 text-gray-800;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 p-6">
+    <div id="loading" class="hidden">
+      <div class="flex items-center justify-center h-32">
+        <div
+          class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"
+        ></div>
+        <span class="ml-2 text-gray-600">Đang phân tích...</span>
+      </div>
+    </div>
+
+    <div id="error" class="hidden">
+      <div
+        class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+        role="alert"
+      >
+        <strong class="font-bold">Lỗi!</strong>
+        <span class="block sm:inline" id="error-message"></span>
+      </div>
+    </div>
+
+    <div id="results" class="hidden">
+      <div class="mb-6 flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-gray-900">Kết quả phân tích</h1>
+        <div class="flex items-center gap-4">
+          <div class="text-right">
+            <div class="text-sm text-gray-600">Điểm đánh giá</div>
+            <div class="text-2xl font-bold" id="total-score">0/20</div>
+          </div>
+          <div id="sentiment-badge" class="sentiment-badge"></div>
+        </div>
+      </div>
+
+      <div id="criteria-list" class="space-y-4">
+        <!-- Results will be inserted here -->
+      </div>
+
+      <div class="mt-6">
+        <button
+          onclick="window.close()"
+          class="w-full bg-gray-100 text-gray-700 font-medium py-2 px-4 rounded hover:bg-gray-200 transition-colors"
+        >
+          Đóng
+        </button>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

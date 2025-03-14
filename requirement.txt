@@ -1,5 +1,0 @@
-langsmith
-weaviate-client
-fastapi[standard]
-docling
-google-genai
